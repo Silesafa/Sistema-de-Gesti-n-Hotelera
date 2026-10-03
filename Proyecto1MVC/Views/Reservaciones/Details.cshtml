@@ -1,0 +1,37 @@
+﻿@model Proyecto1MVC.Models.GestionReservaciones
+
+@{
+    ViewData["Title"] = "Detalles de Reservación";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="card">
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Código</dt>
+            <dd class="col-sm-9">@Model.CodigoReservacion</dd>
+
+            <dt class="col-sm-3">Cliente</dt>
+            <dd class="col-sm-9">@Model.ClienteIdentificacion</dd>
+
+            <dt class="col-sm-3">Fecha Ingreso</dt>
+            <dd class="col-sm-9">@Model.FechaIngreso.ToString("dd/MM/yyyy")</dd>
+
+            <dt class="col-sm-3">Fecha Salida</dt>
+                <dd class="col-sm-9">@Model.FechaSalida.ToString("dd/MM/yyyy")</dd>
+
+            <dt class="col-sm-3">Cantidad Personas</dt>
+            <dd class="col-sm-9">@Model.CantidadPersonas</dd>
+
+            <dt class="col-sm-3">Estado</dt>
+            <dd class="col-sm-9">@Model.EstadoReservacion</dd>
+        </dl>
+    </div>
+</div>
+
+<div class="mt-3">
+    <a asp-action="Edit" asp-route-codigo="@Model.CodigoReservacion" class="btn btn-warning">Editar</a>
+    <a asp-action="Delete" asp-route-codigo="@Model.CodigoReservacion" class="btn btn-danger">Eliminar</a>
+    <a asp-action="Index" class="btn btn-secondary">Volver a la lista</a>
+</div>

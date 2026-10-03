@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Proyecto1MVC.Models.GestionReservaciones>
+
+@{
+    ViewData["Title"] = "Buscar Reservación";
+}
+
+<h2>Buscar Reservación</h2>
+
+<form asp-action="BuscarPorCodigo" method="get" class="mb-3">
+    <div class="form-group">
+        <label for="codigo">Ingrese código de reservación</label>
+        <input type="text" name="codigo" class="form-control" placeholder="Ej: 1" />
+    </div>
+    <button type="submit" class="btn btn-info">Buscar</button>
+    <a asp-action="Index" class="btn btn-secondary ml-2">Volver</a>
+</form>
+
+<form asp-action="BuscarPorCliente" method="get" class="mb-3">
+    <div class="form-group">
+        <label for="clienteId">Ingrese identificación del cliente</label>
+        <input type="text" name="clienteId" class="form-control" placeholder="Ej: 1-2345-6789" />
+    </div>
+    <button type="submit" class="btn btn-info">Buscar</button>
+    <a asp-action="Index" class="btn btn-secondary ml-2">Volver</a>
+</form>
+
+
+@if (ViewBag.Mensaje != null)
+{
+    <div class="alert alert-warning">@ViewBag.Mensaje</div>
+}
+
+@if (Model != null && Model.Any())
+{
+    <h3>Resultado</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Cliente</th>
+                <th>Habitación</th>
+                <th>Fecha Inicio</th>
+                <th>Fecha Fin</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var reservacion in Model)
+            {
+                <tr>
+                    <td>@reservacion.CodigoReservacion</td>
+                    <td>@reservacion.ClienteIdentificacion</td>
+                    <td>@reservacion.NumeroHabitacion</td>
+                    <td>@reservacion.FechaIngreso.ToString("dd/MM/yyyy")</td>
+                    <td>@reservacion.FechaSalida.ToString("dd/MM/yyyy")</td>
+
+                    <td>
+                        <a asp-action="Edit" asp-route-codigo="@reservacion.CodigoReservacion" class="btn btn-warning btn-sm">Editar</a>
+                        <a asp-action="Details" asp-route-codigo="@reservacion.CodigoReservacion" class="btn btn-info btn-sm">Detalles</a>
+                        <a asp-action="Delete" asp-route-codigo="@reservacion.CodigoReservacion" class="btn btn-danger btn-sm">Eliminar</a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

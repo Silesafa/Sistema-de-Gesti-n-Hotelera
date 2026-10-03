@@ -1,0 +1,30 @@
+﻿@model Proyecto1MVC.Models.GestionClientes
+
+
+@{
+    ViewData["Title"] = "Detalles del Cliente";
+}
+
+<h2>Detalles del Cliente</h2>
+
+<div>
+    <h4>@Model.Nombre @Model.PrimerApellido @Model.SegundoApellido</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Tipo Identificación</dt>
+        <dd class="col-sm-10">@Model.TipoIdentificacion</dd>
+
+        <dt class="col-sm-2">Identificación</dt>
+        <dd class="col-sm-10">@Model.ClienteIdentificacion</dd>
+
+        <dt class="col-sm-2">Fecha Nacimiento</dt>
+        <dd class="col-sm-10">@Model.FechaNacimiento.ToString("dd/MM/yyyy")</dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ClienteIdentificacion" class="btn btn-primary">Editar</a>
+    <a asp-action="Delete" asp-route-id="@Model.ClienteIdentificacion" class="btn btn-danger">Eliminar</a>
+    <a asp-action="Index" class="btn btn-secondary">Volver a la lista</a>
+</div>
+

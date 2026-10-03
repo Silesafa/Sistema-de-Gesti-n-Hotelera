@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Proyecto1MVC.Models.GestionEmpleados>
+
+@{
+    ViewData["Title"] = "Buscar Empleado";
+}
+
+<h2>Buscar Empleado</h2>
+<form asp-action="BuscarPorIdentificacion" method="get" class="mb-3">
+    <div class="form-group">
+        <label for="id">Ingrese identificación</label>
+        <input type="text" name="id" class="form-control" placeholder="Ej: 1-2345-6789" />
+    </div>
+    <button type="submit" class="btn btn-info">Buscar</button>
+    <a asp-action="Index" class="btn btn-secondary ml-2">Volver</a>
+</form>
+
+
+@if (ViewBag.Mensaje != null)
+{
+    <div class="alert alert-warning">@ViewBag.Mensaje</div>
+}
+
+@if (Model != null && Model.Any())
+{
+    <h3>Resultado</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Identificación</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Puesto</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var empleado in Model)
+            {
+                <tr>
+                    <td>@empleado.EmpleadoIdentificacion</td>
+                    <td>@empleado.Nombre</td>
+                    <td>@empleado.PrimerApellido</td>
+                    <td>@empleado.SegundoApellido</td>
+                    <td>@empleado.FechaNacimiento.ToString("dd/MM/yyyy")</td>
+                    <td>@empleado.FechaIngreso.ToString("dd/MM/yyyy")</td>
+
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@empleado.EmpleadoIdentificacion" class="btn btn-warning btn-sm">Editar</a>
+                        <a asp-action="Details" asp-route-id="@empleado.EmpleadoIdentificacion" class="btn btn-info btn-sm">Detalles</a>
+                        <a asp-action="Delete" asp-route-id="@empleado.EmpleadoIdentificacion" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

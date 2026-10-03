@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Proyecto1MVC.Models.GestionClientes>
+
+@{
+    ViewData["Title"] = "Buscar Cliente";
+}
+
+<h2>Buscar Cliente</h2>
+
+<form asp-action="BuscarPorIdentificacion" method="get" class="mb-3">
+    <div class="form-group">
+        <label for="identificacion">Ingrese identificación</label>
+        <input type="text" name="identificacion" class="form-control" placeholder="Ej: 1-2345-6789" />
+    </div>
+    <button type="submit" class="btn btn-info">Buscar</button>
+    <a asp-action="Index" class="btn btn-secondary ml-2">Volver</a>
+</form>
+
+
+
+@if (ViewBag.Mensaje != null)
+{
+    <div class="alert alert-warning">@ViewBag.Mensaje</div>
+}
+
+@if (Model != null && Model.Any())
+{
+    <h3>Resultado</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Identificación</th>
+                <th>Nombre</th>
+                <th>Primer Apellido</th>
+                <th>Segundo Apellido</th>
+                <th>FechaNacimiento</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cliente in Model)
+            {
+                <tr>
+                    <td>@cliente.ClienteIdentificacion</td>
+                    <td>@cliente.Nombre</td>
+                    <td>@cliente.PrimerApellido</td>
+                    <td>@cliente.SegundoApellido</td>
+                    <td>@cliente.FechaNacimiento.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@cliente.ClienteIdentificacion" class="btn btn-warning btn-sm">Editar</a>
+                        <a asp-action="Details" asp-route-id="@cliente.ClienteIdentificacion" class="btn btn-info btn-sm">Detalles</a>
+                        <a asp-action="Delete" asp-route-id="@cliente.ClienteIdentificacion" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+

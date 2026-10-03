@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Proyecto1MVC/Proyecto1MVC.csproj" />
+  <Project Path="Proyecto2API/Proyecto2API.csproj" Id="fda22342-6280-49f6-a3c8-16216f52eb2f" />
+</Solution>

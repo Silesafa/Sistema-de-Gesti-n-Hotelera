@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Proyecto1MVC.Models.GestionHabitaciones>
+
+@{
+    ViewData["Title"] = "Buscar Habitación";
+}
+
+<h2>Buscar Habitación</h2>
+
+<form asp-action="BuscarPorNumeroHabitacion" method="get" class="mb-3">
+    <div class="form-group">
+        <label for="numero">Ingrese número de habitación</label>
+        <input type="number" name="numero" class="form-control" placeholder="Ej: 1" />
+    </div>
+    <button type="submit" class="btn btn-info">Buscar</button>
+    <a asp-action="Index" class="btn btn-secondary ml-2">Volver</a>
+</form>
+
+
+@if (ViewBag.Mensaje != null)
+{
+    <div class="alert alert-warning">@ViewBag.Mensaje</div>
+}
+
+@if (Model != null && Model.Any())
+{
+    <h3>Resultado</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Número</th>
+                <th>Tipo</th>
+                <th>Precio</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var habitacion in Model)
+            {
+                <tr>
+                    <td>@habitacion.NumeroHabitacion</td>
+                    <td>@habitacion.TipoHabitacion</td>
+                    <td>@habitacion.TarifaPorNoche</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@habitacion.NumeroHabitacion" class="btn btn-warning btn-sm">Editar</a>
+                        <a asp-action="Details" asp-route-id="@habitacion.NumeroHabitacion" class="btn btn-info btn-sm">Detalles</a>
+                        <a asp-action="Delete" asp-route-id="@habitacion.NumeroHabitacion" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

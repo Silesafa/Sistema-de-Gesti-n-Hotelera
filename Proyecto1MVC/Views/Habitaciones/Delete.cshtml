@@ -1,0 +1,25 @@
+﻿@model Proyecto1MVC.Models.GestionHabitaciones
+
+@{
+    ViewData["Title"] = "Eliminar Habitación";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h4>¿Está seguro que desea eliminar esta habitación?</h4>
+
+<div class="card">
+    <div class="card-body">
+        <p><strong>Número:</strong> @Model.NumeroHabitacion</p>
+        <p><strong>Tipo:</strong> @Model.TipoHabitacion</p>
+        <p><strong>Tarifa por Noche:</strong> ₡@Model.TarifaPorNoche.ToString("N2")</p>
+        <p><strong>TV Satelital:</strong> @(Model.TVSatelital ? "Sí" : "No")</p>
+        <p><strong>Pendientes de Mantenimiento:</strong> @Model.PendientesMantenimiento</p>
+    </div>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="NumeroHabitacion" />
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

@@ -1,0 +1,41 @@
+﻿@model Proyecto1MVC.Models.GestionHabitaciones
+
+@{
+    ViewData["Title"] = "Registrar Habitación";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="NumeroHabitacion"></label>
+        <input asp-for="NumeroHabitacion" class="form-control" />
+        <span asp-validation-for="NumeroHabitacion" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TipoHabitacion"></label>
+        <select asp-for="TipoHabitacion" asp-items="ViewBag.TiposHabitacion" class="form-control"></select>
+        <span asp-validation-for="TipoHabitacion" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TarifaPorNoche"></label>
+        <input asp-for="TarifaPorNoche" class="form-control" />
+        <span asp-validation-for="TarifaPorNoche" class="text-danger"></span>
+    </div>
+
+    <div class="form-group form-check">
+        <input asp-for="TVSatelital" class="form-check-input" />
+        <label asp-for="TVSatelital" class="form-check-label"></label>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PendientesMantenimiento"></label>
+        <textarea asp-for="PendientesMantenimiento" class="form-control"></textarea>
+        <span asp-validation-for="PendientesMantenimiento" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Registrar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

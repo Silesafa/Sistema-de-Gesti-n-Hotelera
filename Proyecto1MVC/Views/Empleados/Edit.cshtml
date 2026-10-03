@@ -1,0 +1,87 @@
+﻿@model Proyecto1MVC.Models.GestionEmpleados
+
+@{
+    ViewData["Title"] = "Editar Empleado";
+}
+
+<h2>Editar Empleado</h2>
+
+<form asp-action="Edit" method="post">
+    <div class="form-group">
+        <label asp-for="TipoIdentificacion">Tipo de Identificación</label>
+        <select asp-for="TipoIdentificacion" class="form-control" id="TipoIdentificacion">
+            <option value="Cedula">Cédula</option>
+            <option value="DIMEX">DIMEX</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="EmpleadoIdentificacion">Identificación</label>
+        <input asp-for="EmpleadoIdentificacion" class="form-control" id="EmpleadoIdentificacion" />
+        <span asp-validation-for="EmpleadoIdentificacion" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Nombre"></label>
+        <input asp-for="Nombre" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PrimerApellido"></label>
+        <input asp-for="PrimerApellido" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SegundoApellido"></label>
+        <input asp-for="SegundoApellido" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FechaNacimiento"></label>
+        <input asp-for="FechaNacimiento" type="date" class="form-control" />
+        <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FechaIngreso"></label>
+        <input asp-for="FechaIngreso" type="date" class="form-control" />
+        <span asp-validation-for="FechaIngreso" class="text-danger"></span>
+    </div>
+
+
+
+    <div class="form-group">
+        <label asp-for="Categoria"></label>
+        <input asp-for="Categoria" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Salario"></label>
+        <input asp-for="Salario" type="number" step="0.01" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Provincia"></label>
+        <input asp-for="Provincia" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Canton"></label>
+        <input asp-for="Canton" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Distrito"></label>
+        <input asp-for="Distrito" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DireccionExacta"></label>
+        <input asp-for="DireccionExacta" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
+
+

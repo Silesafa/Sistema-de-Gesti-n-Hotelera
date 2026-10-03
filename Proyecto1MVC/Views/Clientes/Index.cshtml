@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Proyecto1MVC.Models.GestionClientes>
+
+@{
+    ViewData["Title"] = "Lista de Clientes";
+}
+<h2>Lista de Clientes</h2>
+
+<div class="mb-3">
+    <a asp-action="Create" class="btn btn-primary btn-block mb-3">Registrar Cliente</a>
+    <a asp-action="Search" class="btn btn-info mb-3">Buscar Cliente</a>
+    
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Identificación</th>
+            <th>Nombre</th>
+            <th>Primer Apellido</th>
+            <th>Segundo Apellido</th>
+            <th>Fecha Nacimiento</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var cliente in Model)
+            {
+                <tr>
+                    <td>@cliente.ClienteIdentificacion</td>
+                    <td>@cliente.Nombre</td>
+                    <td>@cliente.PrimerApellido</td>
+                    <td>@cliente.SegundoApellido</td>
+                    <td>@cliente.FechaNacimiento.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <a asp-action="Edit" asp-route-id="@cliente.ClienteIdentificacion" class="btn btn-warning">Editar</a>
+                            <a asp-action="Details" asp-route-id="@cliente.ClienteIdentificacion" class="btn btn-info">Detalles</a>
+                            <a asp-action="Delete" asp-route-id="@cliente.ClienteIdentificacion" class="btn btn-danger">Eliminar</a>
+                        </div>
+                    </td>
+
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" class="text-center">No hay clientes registrados.</td>
+            </tr>
+        }
+    </tbody>
+</table>

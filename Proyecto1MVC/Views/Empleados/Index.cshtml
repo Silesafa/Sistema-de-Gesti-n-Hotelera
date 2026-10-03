@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Proyecto1MVC.Models.GestionEmpleados>
+
+@{
+    ViewData["Title"] = "Lista de Empleados";
+}
+
+<h2>Lista de Empleados</h2>
+
+<div class="mb-3">
+    <!-- Btn Registrar Empleado -->
+    <a asp-action="Create" class="btn btn-primary btn-block mb-3">Registrar Empleado</a>
+
+    <!-- Btn Buscar Cliente -->
+    <a asp-action="Search" class="btn btn-info mb-3">Buscar Empleado</a>    
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Identificación</th>
+            <th>Nombre</th>
+            <th>Primer Apellido</th>
+            <th>Segundo Apellido</th>
+            <th>Fecha Nacimiento</th>
+            <th>Fecha Ingreso</th>
+            <th>Categoría</th>
+            <th>Salario</th>
+            <th>Provincia</th>
+            <th>Cantón</th>
+            <th>Distrito</th>
+            <th>Dirección Exacta</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var empleado in Model)
+        {
+            <tr>
+                <td>@empleado.EmpleadoIdentificacion</td>
+                <td>@empleado.Nombre</td>
+                <td>@empleado.PrimerApellido</td>
+                <td>@empleado.SegundoApellido</td>
+                <td>@empleado.FechaNacimiento.ToString("dd/MM/yyyy")</td>
+                <td>@empleado.FechaIngreso.ToString("dd/MM/yyyy")</td>
+                <td>₡@empleado.Salario.ToString("N2")</td>
+                <td>@empleado.Provincia</td>
+                <td>@empleado.Canton</td>
+                <td>@empleado.Distrito</td>
+                <td>@empleado.DireccionExacta</td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a asp-action="Edit" asp-route-id="@empleado.EmpleadoIdentificacion" class="btn btn-warning">Editar</a>
+                        <a asp-action="Details" asp-route-id="@empleado.EmpleadoIdentificacion" class="btn btn-info">Detalles</a>
+                        <a asp-action="Delete" asp-route-id="@empleado.EmpleadoIdentificacion" class="btn btn-danger">Eliminar</a>
+                    </div>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

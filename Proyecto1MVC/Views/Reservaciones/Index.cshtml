@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Proyecto1MVC.Models.GestionReservaciones>
+
+@{
+    ViewData["Title"] = "Lista de Reservaciones";
+}
+
+<h2>Reservaciones</h2>
+
+
+<div class="mb-3">
+    <!-- Btn Registrar reservación -->
+    <a asp-action="Create" class="btn btn-primary btn-block mb-3">Registrar Reservación</a>
+    <!-- Btn Buscar reservación -->
+    <a asp-action="Search" class="btn btn-info mb-3">Buscar Reservación</a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Cliente</th>
+            <th>Fecha Ingreso</th>
+            <th>Fecha Salida</th>
+            <th>Cantidad Personas</th>
+            <th>Estado</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var reservacion in Model)
+        {
+            <tr>
+                <td>@reservacion.CodigoReservacion</td>
+                <td>@reservacion.ClienteIdentificacion</td>
+                <td>@reservacion.FechaIngreso.ToString("dd/MM/yyyy")</td>
+                <td>@reservacion.FechaSalida.ToString("dd/MM/yyyy")</td>
+                <td>@reservacion.CantidadPersonas</td>
+                <td>@reservacion.EstadoReservacion</td>
+                <td> 
+                    <a asp-action="Edit" asp-route-codigo="@reservacion.CodigoReservacion" class="btn btn-warning btn-sm">Editar</a>
+                    <a asp-action="Details" asp-route-codigo="@reservacion.CodigoReservacion" class="btn btn-info btn-sm">Detalles</a>
+                    <a asp-action="Delete" asp-route-codigo="@reservacion.CodigoReservacion" class="btn btn-danger btn-sm">Eliminar</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

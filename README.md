@@ -1,43 +1,43 @@
-# 🏨 Sistema de Gestión Hotelera — Web API RESTful & ASP.NET Core MVC
+# 🏨 Hotel Management System — RESTful Web API & ASP.NET Core MVC
 
-Este proyecto corresponde a la segunda etapa del desarrollo del sistema de gestión hotelera para la asignatura **Fundamentos en Programación Web (Código 03075)** de la Universidad Estatal a Distancia (UNED).
+This project corresponds to the second stage of the hotel management system development for the **Fundamentals of Web Programming (Code 03075)** course at Universidad Estatal a Distancia (UNED).
 
-La solución evoluciona la arquitectura hacia un modelo desacoplado utilizando una **Web API RESTful independiente** para la lógica del negocio y almacenamiento en memoria, consumida por un cliente **Web ASP.NET Core MVC**.
+The solution evolves the architecture into a decoupled model utilizing an **independent RESTful Web API** for business logic and in-memory storage, consumed by an **ASP.NET Core MVC** web client.
 
 ---
 
-## 🛠️ Tecnologías y Herramientas
+## 🛠️ Tech Stack & Tools
 
 - **IDE:** Visual Studio Community 2026
-- **Lenguaje:** C# / .NET 10.0
-- **Servicios:** ASP.NET Core Web API (RESTful Services)
-- **Interfaz Web:** ASP.NET Core MVC
-- **Persistencia:** Almacenamiento en Memoria / Cache
-- **Arquitectura:** Modelo-Vista-Controlador (MVC) + Cliente-Servidor HTTP
+- **Language Framework:** C# / .NET 10.0
+- **Services:** ASP.NET Core Web API (RESTful Services)
+- **Web UI:** ASP.NET Core MVC
+- **Persistence:** In-Memory Storage / Cache
+- **Architecture:** Model-View-Controller (MVC) + HTTP Client-Server
 
 ---
 
-## 🚀 Arquitectura y Módulos
+## 🚀 Architecture & Modules
 
-La solución se compone de dos proyectos principales dentro del mismo archivo `.sln`:
+The solution consists of two primary projects within the same `.sln` file:
 
-### 1. 📡 Proyecto RESTful Services (`Proyecto2API`)
-Expone endpoints HTTP (GET, POST, PUT, DELETE) para gestionar las entidades del negocio:
-- **Empleados:** Operaciones CRUD completas para la gestión del personal.
-- **Clientes:** Operaciones CRUD completas para el catálogo de clientes.
-- **Habitaciones:** Operaciones CRUD completas y control de estados de habitaciones.
-- **Reservaciones:** Lógica de reservas, cálculo automático de tarifas, descuentos, IVA (13%), estados y validación de traslape de fechas en memoria.
+### 1. 📡 RESTful Services Project (`Proyecto2API`)
+Exposes HTTP endpoints (GET, POST, PUT, DELETE) to manage business entities:
+- **Employees:** Complete CRUD operations for staff management.
+- **Customers:** Complete CRUD operations for customer records.
+- **Rooms:** Complete CRUD operations and room status management.
+- **Reservations:** Reservation logic, automated fare calculation, discount rules, VAT (13%), reservation statuses, and in-memory date overlap validation.
 
-### 2. 💻 Proyecto Web MVC (`Proyecto1MVC`)
-Capa de presentación que consume la API RESTful mediante `HttpClient`:
-- **Navegación:** Menú fluido entre Clientes, Empleados, Habitaciones y Reservaciones.
-- **Módulos de Búsqueda:** Búsquedas independientes por cédula, número de habitación o código de reserva.
-- **Validaciones:** Control de reglas de negocio en la UI y manejo de restricciones (evita eliminar clientes/habitaciones con reservas activas).
+### 2. 💻 Web MVC Project (`Proyecto1MVC`)
+Presentation layer that consumes the RESTful API via `HttpClient`:
+- **Navigation:** Seamless menu navigation across Customers, Employees, Rooms, and Reservations.
+- **Search Modules:** Independent search functionalities by ID, room number, or reservation code.
+- **Validations:** Enforcement of business logic within the UI and constraint handling (e.g., preventing the deletion of customers/rooms with active reservations).
 
 ---
 
-## ⚙️ Pasos para la Ejecución
+## ⚙️ Getting Started
 
-1. Clonar el repositorio:
+1. Clone the repository:
    ```bash
    git clone [https://github.com/Silesafa/Sistema-de-Gesti-n-Hotelera.git](https://github.com/Silesafa/Sistema-de-Gesti-n-Hotelera.git)
